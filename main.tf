@@ -7,18 +7,9 @@
 #  https://docs.microsoft.com/en-us/azure/cloud-adoption-framework/ready/enterprise-scale/terraform-module-caf-enterprise-scale
 #  https://github.com/Azure/terraform-azurerm-caf-enterprise-scale/tree/main/modules/archetypes
 
-terraform {
-  required_providers {
-    azurerm = {
-      source  = "hashicorp/azurerm"
-      version = ">= 2.77.0"
-    }
-  }
-}
-
-provider "azurerm" {
-  features {}
-}
+# Customization
+#  https://github.com/Azure/terraform-azurerm-caf-enterprise-scale/wiki/%5BUser-Guide%5D-Archetype-Definitions
+#  https://github.com/Azure/terraform-azurerm-caf-enterprise-scale/wiki/[Variables]-custom_landing_zones
 
 # Get the current client configuration from the AzureRM provider.
 # This is used to populate the root_parent_id variable with the
@@ -26,18 +17,6 @@ provider "azurerm" {
 # Management Group.
 
 data "azurerm_client_config" "core" {}
-
-# Use variables to customise the deployment
-
-variable "root_id" {
-  type    = string
-  default = "es"
-}
-
-variable "root_name" {
-  type    = string
-  default = "Enterprise-Scale"
-}
 
 # Declare the Terraform Module for Cloud Adoption Framework
 # Enterprise-scale and provide a base configuration.
@@ -55,5 +34,38 @@ module "enterprise_scale" {
   root_parent_id = data.azurerm_client_config.core.tenant_id
   root_id        = var.root_id
   root_name      = var.root_name
+  library_path   = "${path.root}/lib"
+
+# This is where Main.tf will continuously evolve with the archetype definition json files that represent Optimistic and Pessimistic type LZs
+# notice the archectype_id and how two different json files will have different params with values specified
+  custom_landing_zones = {
+    "${var.root_id}-optimisitic" = {
+      display_name               = "${upper(var.root_id)} Optimisitic"
+      parent_management_group_id = "${var.root_id}-landing-zones"
+      subscription_ids           = []
+      archetype_config = {
+        archetype_id   = "optimistic-lz"
+        parameters     = {}
+        access_control = {}
+      }
+    }
+    "${var.root_id}-pessimistic" = {
+      display_name               = "${upper(var.root_id)} Pessimistic"
+      parent_management_group_id = "${var.root_id}-landing-zones"
+      subscription_ids           = []
+      archetype_config = {
+        archetype_id   = "pessimistic-lz"
+        parameters     = {
+          Deny-Resource-Locations = {
+            listOfAllowedLocations = ["centralus",]
+          }
+          Deny-RSG-Locations = {
+            listOfAllowedLocations = ["centralus",]
+          }
+        }
+        access_control = {}
+      }
+    }
+  }
 
 }
