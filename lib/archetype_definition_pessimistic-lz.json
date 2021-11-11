@@ -1,11 +1,52 @@
 {
   "pessimistic-lz": {
-    "policy_assignments": ["Deny-Resource-Locations", "Deny-RSG-Locations"],
+    "policy_assignments": [
+      "Enable-DDoS-VNET",     
+      "Deny-Resource-Locations", 
+      "Deny-RSG-Locations"
+    ],
     "policy_definitions": [],
-    "policy_set_definitions": [],
+    "policy_set_definitions": [
+      "Enforce-Encryption-CMK",
+      "Deny-PublicPaaSEndpoints",
+      "Enforce-EncryptTransit"
+    ],
     "role_definitions": [],
     "archetype_config": {
       "parameters": {
+        "Enforce-Encryption-CMK": {
+          "defaultValue": "Disabled",
+          "allowedValues": [
+            "Audit",
+            "Disabled"
+          ]
+        },
+        "Deny-Public-IP": {
+          "defaultValue": "Deny",
+          "allowedValues": [
+            "Deny"
+          ]
+        },
+        "Deny-PublicPaaSEndpoints": {
+          "defaultValue": "Deny",
+          "allowedValues": [
+            "Deny"
+          ]
+        },        
+        "Enforce-EncryptTransit": {
+          "defaultValue": "Deny",
+          "allowedValues": [
+            "Deny"
+          ]
+        },
+        "Enable-DDoS-VNET": {
+          "defaultValue": "Disabled",
+          "allowedValues": [
+            "Audit",
+            "Modify",
+            "Disabled"
+          ]
+        },
         "Deny-Resource-Locations": {
           "listOfAllowedLocations": [
             "eastus",

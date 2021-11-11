@@ -31,6 +31,9 @@ module "enterprise_scale" {
     azurerm.management   = azurerm
   }
 
+# Do NOT deploy demo landing zones:
+  deploy_demo_landing_zones = false
+
   root_parent_id = data.azurerm_client_config.core.tenant_id
   root_id        = var.root_id
   root_name      = var.root_name
@@ -61,6 +64,9 @@ module "enterprise_scale" {
           }
           Deny-RSG-Locations = {
             listOfAllowedLocations = ["centralus",]
+          }
+          Enforce-Encryption-CMK = {
+            value = "Disabled"
           }
         }
         access_control = {}
