@@ -1,8 +1,21 @@
 {
   "optimistic-lz": {
-    "policy_assignments": ["Deny-Resource-Locations", "Deny-RSG-Locations"],
+    "policy_assignments": [
+      "Deny-Resource-Locations", 
+      "Deny-RSG-Locations",
+      "Deny-Public-IP",
+      "Deny-RDP-From-Internet",
+      "Deny-Subnet-Without-Nsg",
+      "Deploy-VM-Backup",
+      "Deny-Public-Endpoints",
+      "Deploy-Private-DNS-Zones"
+    ],
     "policy_definitions": [],
-    "policy_set_definitions": [],
+    "policy_set_definitions": [
+      "Enforce-Encryption-CMK",
+      "Deny-PublicPaaSEndpoints",
+      "Enforce-EncryptTransit"
+    ],
     "role_definitions": [],
     "archetype_config": {
       "parameters": {
