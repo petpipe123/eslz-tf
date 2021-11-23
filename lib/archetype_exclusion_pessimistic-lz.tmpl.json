@@ -1,0 +1,15 @@
+{
+  "exclude_pessimistic-lz": {
+    "policy_assignments": [
+      "Deploy-DDoSProtection",
+      "Enforce-Encryption-CMK"
+    ],
+    "policy_definitions": [],
+    "policy_set_definitions": [],
+    "role_definitions": [],
+    "archetype_config": {
+      "parameters": {},
+      "access_control": {}
+    }
+  }
+}

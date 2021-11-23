@@ -1,12 +1,14 @@
 {
-  "pessimistic-lz": {
+  "archetype_pessimistic-lz": {
     "policy_assignments": [     
       "Deny-Resource-Locations", 
       "Deny-RSG-Locations",
+      "Deploy-VM-Backup",
       "Deny-Public-IP",
       "Deny-RDP-From-Internet",
       "Deny-Subnet-Without-Nsg",
-      "Deploy-VM-Backup"
+      "Deny-Public-Endpoints",
+      "Deploy-Private-DNS-Zones"
     ],
     "policy_definitions": [],
     "policy_set_definitions": [

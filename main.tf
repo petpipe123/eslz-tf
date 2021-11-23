@@ -45,41 +45,23 @@ module "enterprise_scale" {
 # notice the archectype_id and how two different json files will have different params with values specified
   custom_landing_zones = {
 
-    "${var.root_id}" = {
-      display_name               = "${upper(var.root_id)}"
-      parent_management_group_id = "${var.root_id}"
-      subscription_ids           = []
-      archetype_config = {
-        archetype_id   = "custom_lz_root"
-        parameters     = {
-           Enforce-Encryption-CMK = {
-            value = "Disabled"
-          }
-          Deploy-DDoSProtection = {
-            value = "Audit"
-          }
-        }
-        access_control = {}
-      }
-    }
-
     "${var.root_id}-optimisitic" = {
       display_name               = "${upper(var.root_id)} Optimisitic"
       parent_management_group_id = "${var.root_id}-landing-zones"
       subscription_ids           = []
       archetype_config = {
-        archetype_id   = "optimistic-lz"
+        archetype_id   = "archetype_optimistic-lz"
         parameters     = {}
-        }
         access_control = {}
       }
+    }
     
     "${var.root_id}-pessimistic" = {
       display_name               = "${upper(var.root_id)} Pessimistic"
       parent_management_group_id = "${var.root_id}-landing-zones"
       subscription_ids           = []
       archetype_config = {
-        archetype_id   = "pessimistic-lz"
+        archetype_id   = "archetype_pessimistic-lz"
         parameters     = {
           Deny-Resource-Locations = {
             listOfAllowedLocations = ["centralus",]
