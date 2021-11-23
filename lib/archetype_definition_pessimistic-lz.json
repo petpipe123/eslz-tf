@@ -10,20 +10,12 @@
     ],
     "policy_definitions": [],
     "policy_set_definitions": [
-      "Enforce-Encryption-CMK",
       "Deny-PublicPaaSEndpoints",
       "Enforce-EncryptTransit"
     ],
     "role_definitions": [],
     "archetype_config": {
       "parameters": {
-        "Enforce-Encryption-CMK": {
-          "defaultValue": "Disabled",
-          "allowedValues": [
-            "Audit",
-            "Disabled"
-          ]
-        },
         "Deny-Resource-Locations": {
           "listOfAllowedLocations": [
             "eastus",

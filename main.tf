@@ -10,6 +10,7 @@
 # Customization
 #  https://github.com/Azure/terraform-azurerm-caf-enterprise-scale/wiki/%5BUser-Guide%5D-Archetype-Definitions
 #  https://github.com/Azure/terraform-azurerm-caf-enterprise-scale/wiki/[Variables]-custom_landing_zones
+# https://github.com/Azure/terraform-azurerm-caf-enterprise-scale/wiki/%5BExamples%5D-Expand-Built-in-Archetype-Definitions
 #  https://github.com/Azure/terraform-azurerm-caf-enterprise-scale/blob/main/modules/archetypes/lib/archetype_definitions/archetype_definition_es_root.tmpl.json
 
 # Get the current client configuration from the AzureRM provider.
@@ -43,34 +44,36 @@ module "enterprise_scale" {
 # This is where Main.tf will continuously evolve with the archetype definition json files that represent Optimistic and Pessimistic type LZs
 # notice the archectype_id and how two different json files will have different params with values specified
   custom_landing_zones = {
-#    "${var.root_id}" = {
-#      display_name               = "${upper(var.root_id)}"
-#      parent_management_group_id = "${var.root_id}"
-#      subscription_ids           = []
-#      archetype_config = {
-#        archetype_id   = "root-lz"
-#        parameters     = {
-#           Enforce-Encryption-CMK = {
-#            value = "Disabled"
-#          }
-#        }
-#        access_control = {}
-#      }
-#    }
+
+    "${var.root_id}" = {
+      display_name               = "${upper(var.root_id)}"
+      parent_management_group_id = "${var.root_id}"
+      subscription_ids           = []
+      archetype_config = {
+        archetype_id   = "custom_lz_root"
+        parameters     = {
+           Enforce-Encryption-CMK = {
+            value = "Disabled"
+          }
+          Deploy-DDoSProtection = {
+            value = "Audit"
+          }
+        }
+        access_control = {}
+      }
+    }
+
     "${var.root_id}-optimisitic" = {
       display_name               = "${upper(var.root_id)} Optimisitic"
       parent_management_group_id = "${var.root_id}-landing-zones"
       subscription_ids           = []
       archetype_config = {
         archetype_id   = "optimistic-lz"
-        parameters     = {
-           Enforce-Encryption-CMK = {
-            value = "Disabled"
-          }
+        parameters     = {}
         }
         access_control = {}
       }
-    }
+    
     "${var.root_id}-pessimistic" = {
       display_name               = "${upper(var.root_id)} Pessimistic"
       parent_management_group_id = "${var.root_id}-landing-zones"
@@ -83,14 +86,12 @@ module "enterprise_scale" {
           }
           Deny-RSG-Locations = {
             listOfAllowedLocations = ["centralus",]
-          }
-          Enforce-Encryption-CMK = {
-            value = "Disabled"
-          }
+          }          
         }
         access_control = {}
       }
     }
+    
   }
 
 }

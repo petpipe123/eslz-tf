@@ -1,0 +1,30 @@
+{
+  "custom_lz_root": {
+    "policy_assignments": [],
+    "policy_definitions": [],
+    "policy_set_definitions": [
+      "Enforce-Encryption-CMK",
+      "Deploy-DDoSProtection"
+    ],
+    "role_definitions": [],
+    "archetype_config": {
+      "parameters": {
+        "Enforce-Encryption-CMK": {
+          "defaultValue": "Disabled",
+          "allowedValues": [
+            "Audit",
+            "Disabled"
+          ]
+        },
+        "Deploy-DDoSProtection": {
+          "defaultValue": "Audit",
+          "allowedValues": [
+            "Audit",
+            "Disabled"
+          ]
+        }
+      },
+      "access_control": {}
+    }
+  }
+}
