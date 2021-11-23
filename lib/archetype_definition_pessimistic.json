@@ -1,0 +1,20 @@
+{
+  "archetype_pessimistic": {
+    "policy_assignments": [     
+      "Deploy-VM-Backup",
+      "Deny-Public-IP",
+      "Deny-RDP-From-Internet",
+      "Deny-Public-Endpoints",
+      "Deploy-Private-DNS-Zones"
+    ],
+    "policy_definitions": [],
+    "policy_set_definitions": [
+      "Deny-PublicPaaSEndpoints"
+    ],
+    "role_definitions": [],
+    "archetype_config": {
+      "parameters": {},
+      "access_control": {}
+    }
+  }
+}

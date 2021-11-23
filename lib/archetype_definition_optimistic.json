@@ -1,8 +1,7 @@
 {
-  "exclude_pessimistic-lz": {
+  "archetype_optimistic": {
     "policy_assignments": [
-      "Deploy-DDoSProtection",
-      "Enforce-Encryption-CMK"
+      "Deploy-VM-Backup"
     ],
     "policy_definitions": [],
     "policy_set_definitions": [],

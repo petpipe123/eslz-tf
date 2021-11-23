@@ -50,7 +50,7 @@ module "enterprise_scale" {
       parent_management_group_id = "${var.root_id}-landing-zones"
       subscription_ids           = []
       archetype_config = {
-        archetype_id   = "archetype_optimistic-lz"
+        archetype_id   = "archetype_optimistic"
         parameters     = {}
         access_control = {}
       }
@@ -61,7 +61,7 @@ module "enterprise_scale" {
       parent_management_group_id = "${var.root_id}-landing-zones"
       subscription_ids           = []
       archetype_config = {
-        archetype_id   = "archetype_pessimistic-lz"
+        archetype_id   = "archetype_pessimistic"
         parameters     = {
           Deny-Resource-Locations = {
             listOfAllowedLocations = ["centralus",]
