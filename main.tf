@@ -41,6 +41,11 @@ module "enterprise_scale" {
   root_name      = var.root_name
   library_path   = "${path.root}/lib"
 
+  # leverage variables:
+  deploy_management_resources    = var.deploy_management_resources
+  # Use settings.management.tf file settings:
+  configure_management_resources = local.configure_management_resources
+
 # This is where Main.tf will continuously evolve with the archetype definition json files that represent Optimistic and Pessimistic type LZs
 # notice the archectype_id and how two different json files will have different params with values specified
   custom_landing_zones = {

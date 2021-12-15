@@ -5,11 +5,21 @@
       "Deny-Public-IP",
       "Deny-RDP-From-Internet",
       "Deny-Public-Endpoints",
-      "Deploy-Private-DNS-Zones"
+      "Deploy-Private-DNS-Zones",
+      "Deploy-ASC-Monitoring",
+      "Deploy-ASC-Configuration",
+      "Deploy-AzActivity-Log",
+      "Deploy-Resource-Diag",
+      "Deploy-VM-Monitoring",
+      "Deploy-VMSS-Monitoring"
     ],
     "policy_definitions": [],
-    "policy_set_definitions": [
-      "Deny-PublicPaaSEndpoints"
+    "policy_set_definitions": [      
+      "Deny-PublicPaaSEndpoints",
+      "Deploy-Diagnostics-LogAnalytics",
+      "Deploy-Private-DNS-Zones",
+      "Deploy-Sql-Security",
+      "Enforce-EncryptTransit"
     ],
     "role_definitions": [],
     "archetype_config": {
