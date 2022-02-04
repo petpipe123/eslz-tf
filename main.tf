@@ -50,12 +50,12 @@ module "enterprise_scale" {
 # notice the archectype_id and how two different json files will have different params with values specified
   custom_landing_zones = {
 
-    "${var.root_id}-optimisitic" = {
-      display_name               = "${upper(var.root_id)} Optimisitic"
-      parent_management_group_id = "${var.root_id}-landing-zones"
+    "${var.root_id}-avd" = {
+      display_name               = "${upper(var.root_id)} AVD"
+      parent_management_group_id = "${var.root_id}-platform"
       subscription_ids           = []
       archetype_config = {
-        archetype_id   = "archetype_optimistic"
+        archetype_id   = "archetype_avd"
         parameters     = {}
         access_control = {}
       }

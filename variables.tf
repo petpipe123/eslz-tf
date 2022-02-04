@@ -6,12 +6,12 @@
 
 variable "root_id" {
   type    = string
-  default = "pp-es"
+  default = "gov-es"
 }
 
 variable "root_name" {
   type    = string
-  default = "Custom PP ESLZ"
+  default = "Custom gPP ESLZ"
 }
 
 variable "deploy_management_resources" {

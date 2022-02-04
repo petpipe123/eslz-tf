@@ -1,5 +1,5 @@
 {
-    "extend_pp-es-landing-zones": {
+    "extend_gpp-es": {
       "policy_assignments": [
         "Deny-Resource-Locations", 
         "Deny-RSG-Locations",
