@@ -1,5 +1,5 @@
 {
-  "archetype_avd": {
+  "archetype_g_avd": {
     "policy_assignments": [     
       "Deploy-VM-Backup",
       "Deny-Public-IP",

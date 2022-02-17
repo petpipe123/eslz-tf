@@ -1,5 +1,5 @@
 {
-  "archetype_a-root": {
+  "archetype_g_a-root": {
     "policy_assignments": [     
       "Deploy-VM-Backup",
       "Deny-Public-IP",

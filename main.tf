@@ -25,7 +25,7 @@ data "azurerm_client_config" "core" {}
 
 module "enterprise_scale" {
   source  = "Azure/caf-enterprise-scale/azurerm"
-  version = "1.0.0"
+  version = "1.1.2"
 
   providers = {
     azurerm              = azurerm
@@ -55,18 +55,36 @@ module "enterprise_scale" {
       parent_management_group_id = "${var.root_id}-platform"
       subscription_ids           = []
       archetype_config = {
-        archetype_id   = "archetype_avd"
+        archetype_id   = "archetype_g_avd"
         parameters     = {}
         access_control = {}
       }
     }
-    
-    "${var.root_id}-pessimistic" = {
+
+    "${var.root_id}-g-optimistic" = {
+      display_name               = "${upper(var.root_id)} Optimistic"
+      parent_management_group_id = "${var.root_id}-landing-zones"
+      subscription_ids           = []
+      archetype_config = {
+        archetype_id   = "archetype_g_optimistic"
+        parameters     = {
+          Deny-Resource-Locations = {
+            listOfAllowedLocations = ["centralus",]
+          }
+          Deny-RSG-Locations = {
+            listOfAllowedLocations = ["centralus",]
+          }          
+        }
+        access_control = {}
+      }
+    }
+
+    "${var.root_id}-g-pessimistic" = {
       display_name               = "${upper(var.root_id)} Pessimistic"
       parent_management_group_id = "${var.root_id}-landing-zones"
       subscription_ids           = []
       archetype_config = {
-        archetype_id   = "archetype_pessimistic"
+        archetype_id   = "archetype_g_pessimistic"
         parameters     = {
           Deny-Resource-Locations = {
             listOfAllowedLocations = ["centralus",]

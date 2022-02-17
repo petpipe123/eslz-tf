@@ -1,10 +1,9 @@
 {
-  "archetype_pessimistic": {
+  "archetype_g_pessimistic": {
     "policy_assignments": [     
       "Deploy-VM-Backup",
       "Deny-Public-IP",
       "Deny-RDP-From-Internet",
-      "Deny-Public-Endpoints",
       "Deploy-Private-DNS-Zones",
       "Deploy-ASC-Monitoring",
       "Deploy-ASC-Configuration",

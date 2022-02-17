@@ -1,5 +1,5 @@
 {
-  "exclude_optimistic": {
+  "exclude_g_optimistic": {
     "policy_assignments": [
       "Enable-DDoS-VNET",
       "Deploy-DDoSProtection",
