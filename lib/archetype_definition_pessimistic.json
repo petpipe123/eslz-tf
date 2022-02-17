@@ -5,7 +5,6 @@
       "Deny-Public-IP",
       "Deny-RDP-From-Internet",
       "Deny-Public-Endpoints",
-      "Deploy-Private-DNS-Zones",
       "Deploy-ASC-Monitoring",
       "Deploy-ASC-Configuration",
       "Deploy-AzActivity-Log",

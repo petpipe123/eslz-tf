@@ -1,10 +1,21 @@
 {
   "archetype_optimistic": {
-    "policy_assignments": [
-      "Deploy-VM-Backup"
+    "policy_assignments": [     
+      "Deny-RDP-From-Internet",
+      "Deploy-ASC-Monitoring",
+      "Deploy-ASC-Configuration",
+      "Deploy-AzActivity-Log",
+      "Deploy-Resource-Diag",
+      "Deploy-VM-Monitoring",
+      "Deploy-VMSS-Monitoring"
     ],
     "policy_definitions": [],
-    "policy_set_definitions": [],
+    "policy_set_definitions": [      
+      "Deny-PublicPaaSEndpoints",
+      "Deploy-Diagnostics-LogAnalytics",
+      "Deploy-Sql-Security",
+      "Enforce-EncryptTransit"
+    ],
     "role_definitions": [],
     "archetype_config": {
       "parameters": {},
